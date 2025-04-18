@@ -20,6 +20,7 @@ function AddTodo({ addTodo }) {
       <input
         type="text"
         value={newTask}
+        placeholder="Add new task"
         className="border w-full rounded px-2 py-1 bg-white border-slate-300"
         onChange={(e) => {
           setNewTask(e.target.value);

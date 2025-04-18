@@ -4,8 +4,11 @@ import TodoItem from "./components/TodoItem";
 import AddTodo from "./components/AddTodo";
 
 function App() {
-  // const [stateVariableName, functionToUpdateThisStateVar] = useState(InitalValue)
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const storedData = localStorage.getItem("todos");
+
+    return storedData ? JSON.parse(storedData) : [];
+  });
 
   function addTodo(task) {
     setTodos([task, ...todos]);
@@ -24,7 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(todos);
+    localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   return (
